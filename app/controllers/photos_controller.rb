@@ -5,6 +5,8 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.all
+    @uploader = Photo.new.picture
+    @uploader.success_action_redirect = new_photo_url
   end
 
   # GET /photos/1
@@ -14,7 +16,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @photo = Photo.new(key: params[:key])
   end
 
   # GET /photos/1/edit
@@ -69,6 +71,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:name, :picture)
+      params.require(:photo).permit(:name, :picture, :key)
     end
 end

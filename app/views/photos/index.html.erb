@@ -12,7 +12,11 @@
       <tr>
         <p><%= photo.name %></p>
         <p><%=l photo.created_at, format: :short %></p>
-        <p><%= image_tag(photo.picture_url, width: 400) if photo.picture.present? %></p>
+        <% if photo.picture_processed? %>
+          <p><%= link_to image_tag(photo.picture_url(:thumb)), photo_path(photo) %></p>
+        <% else %>
+          <em>Processing...</em>
+        <% end %>
         <p><%= link_to t('.edit', default: t("helpers.links.edit")),
                     edit_photo_path(photo), class: 'btn btn-mini' %>
         <%= link_to t('.destroy', default: t("helpers.links.destroy")),
@@ -27,4 +31,7 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', default: t("helpers.links.new")), new_photo_path, class: 'btn btn-info' %>
+<%= direct_upload_form_for @uploader do |f| %>
+  <p><%= f.file_field :picture %></p>
+  <p><%= f.submit "Upload Picture" %></p>
+<% end %>

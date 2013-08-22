@@ -1,14 +1,12 @@
 <%= form_for @photo, html: { class: 'form-horizontal' } do |f| %>
+<%= f.hidden_field :key %>
+
+<p>File: <%= @photo.picture_name %></p>
+
   <div class="control-group">
     <%= f.label :name, class: 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, class: 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :picture, class: 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :picture, class: 'text_field' %>
     </div>
   </div>
 

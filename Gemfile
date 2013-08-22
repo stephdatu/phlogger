@@ -7,7 +7,10 @@ gem 'rails', '4.0.0'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'carrierwave'
-gem "fog"
+gem 'fog'
+gem 'sidekiq'
+gem 'rmagick'
+gem 'carrierwave_direct'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
