@@ -11,6 +11,7 @@ gem 'fog'
 gem 'sidekiq'
 gem 'rmagick'
 gem 'carrierwave_direct'
+gem 'redis'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
