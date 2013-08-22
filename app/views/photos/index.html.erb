@@ -10,22 +10,26 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <p><%= photo.name %></p>
-        <p><%=l photo.created_at, format: :short %></p>
-        <% if photo.picture_processed? %>
-          <p><%= link_to image_tag(photo.picture_url(:thumb)), photo_path(photo) %></p>
-        <% else %>
-          <em>Processing...</em>
-        <% end %>
-        <p><%= link_to t('.edit', default: t("helpers.links.edit")),
-                    edit_photo_path(photo), class: 'btn btn-mini' %>
-        <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-                    photo_path(photo),
-                    method: :delete,
-                    data: { confirm: t('.confirm',
-                            default: t("helpers.links.confirm",
-                            default: 'Are you sure?')) },
-                            class: 'btn btn-mini btn-danger' %></p>
+        <div class="row" >
+          <div class="col-md-4">
+            <p><strong><%= photo.name %></strong></p>
+            <p><%=l photo.created_at, format: :short %></p>
+            <% if photo.picture_processed? %>
+              <p><%= link_to image_tag(photo.picture_url(:thumb)), photo_path(photo) %></p>
+            <% else %>
+              <em>Processing...</em>
+            <% end %>
+            <p><%= link_to t('.edit', default: t("helpers.links.edit")),
+                        edit_photo_path(photo), class: 'btn btn-mini' %>
+            <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+                        photo_path(photo),
+                        method: :delete,
+                        data: { confirm: t('.confirm',
+                                default: t("helpers.links.confirm",
+                                default: 'Are you sure?')) },
+                                class: 'btn btn-mini btn-danger' %></p>
+          </div>
+        </div>
       </tr>
     <% end %>
   </tbody>
